@@ -111,7 +111,6 @@ void Logic() {
         y++;
         break;
     }
-    //if (x > width || x < 0 || y > height || y < 0) gameOver = true;
     
     //Проверка не съели ли хвост
     for (int i = 0; i < nTail; i++) {
@@ -125,6 +124,12 @@ void Logic() {
         nTail++;
         fruitX = rand() % width;
         fruitY = rand() % height;
+
+        while (fruitX >= width || fruitY >= width || fruitX < 0 || fruitY < 0) {
+            fruitX = rand() % width;
+            fruitY = rand() % height;
+        }
+
     }
     if (x < 0) x = width - 2;
     else if (x >= width - 1) x = 0;
